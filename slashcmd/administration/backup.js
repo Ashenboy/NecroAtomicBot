@@ -49,10 +49,9 @@ module.exports = {
         }
     ],
     run: async (client, interaction) => {
+        const owner = await interaction.guild.fetchOwner();
 
-        
-        if(interaction.user.id != interaction.guild.ownerId){
-
+        if(interaction.user.id != owner){
             interaction.followUp(`Only owner of this server can use this command`)
             throw "Perms Error"
         }
